@@ -1,4 +1,6 @@
-A chat room using React + Redux + Socket.io
+A chat room using React + Redux + Socket.io + Material-UI
+
+![image](https://github.com/Alvin-Tsai/Chat-Room/blob/master/img/chatroom.gif)
 
 Features:
 1. Show online users
