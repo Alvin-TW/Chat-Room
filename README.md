@@ -1,5 +1,7 @@
 A chat room using React + Redux + Socket.io + Material-UI
 
+[DEMO](https://chat-room-react.herokuapp.com/)
+
 ![image](https://github.com/Alvin-Tsai/Chat-Room/blob/master/img/chatroom.gif)
 
 Features:
