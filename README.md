@@ -14,3 +14,5 @@ Support browsers: IE edge/Chrome/FireFox
 development mode: `yarn start`
 
 production mode: `yarn build`
+
+test building files: `yarn build-test`
