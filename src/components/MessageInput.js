@@ -18,7 +18,7 @@ export default class ChatInput extends Component {
             this.refs.msgField.input.value = ''
             this.props.actions.setErrorInfo('')
         }else {
-            this.props.actions.setErrorInfo('You don\'t input any messages')
+            this.props.actions.setErrorInfo('You don\'t input any messages.')
         }
     }
 
@@ -39,7 +39,7 @@ export default class ChatInput extends Component {
 
     render() {
         return(
-            <TextField ref="msgField" style={{ width: '90%', paddingTop: '3vh' }} hintText="Input messsages" errorText={ this.props.errorInfo } onKeyPress={ this.handleKeyPress.bind(this) } />
+            <TextField ref="msgField" style={{ width: '90%', paddingTop: '3vh' }} hintText="Input messsages" errorText={ this.props.errorinfo } onKeyPress={ this.handleKeyPress.bind(this) } />
         )
     }
 }

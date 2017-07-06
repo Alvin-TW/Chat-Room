@@ -22,7 +22,7 @@ export default class LoginForm extends Component {
             this.props.actions.setUserInfo(userObj)
             this.props.actions.setErrorInfo('')
         }else {
-            this.props.actions.setErrorInfo('user name should be filled in')
+            this.props.actions.setErrorInfo('user name should be filled in.')
         }
     }
 
@@ -38,7 +38,7 @@ export default class LoginForm extends Component {
                 <div className="login-form">
                     <AppBar showMenuIconButton={ false } title="Chat Room" />
                     <div className="login-form-field">
-                        <TextField hintText="Input your name" errorText={ this.props.errorInfo } ref="usernameField" onKeyPress={ this.handleKeyPress.bind(this) } />
+                        <TextField hintText="Input your name" errorText={ this.props.errorinfo } ref="usernameField" onKeyPress={ this.handleKeyPress.bind(this) } />
                         <RadioButtonGroup name="sex" defaultSelected="boy" ref="sexField" style={{ 'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center' }} >
                             <RadioButton value="boy" label="Boy" style={{ width: 'auto' }} />
                             <RadioButton value="girl" label="Girl" style={{ width: 'auto' }} />
