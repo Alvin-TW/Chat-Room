@@ -10,16 +10,7 @@ import MessageInput from '../components/MessageInput';
 import UserList from '../components/UserList';
 
 export default class ChatRoom extends Component {
-    constructor(props) {
-        super(props);
-        this.initialFunction()
-    }
-
-    handleChangeComplete = color => {
-        this.props.actions.changeMessageBoxColor(color.hex)
-    }
-
-    initialFunction() {
+    componentDidMount() {
         const socket = this.props.socket
 
         socket.on('enterUser', username => {
@@ -37,6 +28,10 @@ export default class ChatRoom extends Component {
         socket.on('updateMessages', messages => {
             this.props.actions.updateMessages(messages)
         })
+    }
+
+    handleChangeComplete = color => {
+        this.props.actions.changeMessageBoxColor(color.hex)
     }
 
     handleLeaveChatRoom() {
