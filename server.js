@@ -6,28 +6,37 @@ var config = require('./configs/webpack.config.dev');
 var server =require('http').createServer(app);
 var io = require('socket.io')(server);
 var compiler = webpack(config);
+var mode = process.env.NODE_ENV;
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-}));
+if(mode === 'production') {
+	app.use(express.static('dist'));
+	app.get('/', function (req, res, next) {
+		res.set('content-type','text/html');
+	    res.sendFile(path.join(__dirname, './dist/index.html'));
+	});
+}else {
+	app.use(require('webpack-dev-middleware')(compiler, {
+	    noInfo: true,
+	    publicPath: config.output.publicPath
+	}));
 
-app.use(require('webpack-hot-middleware')(compiler, {
-    path: '/__webpack_hmr',
-    heartbeat: 2000
-}));
+	app.use(require('webpack-hot-middleware')(compiler, {
+	    path: '/__webpack_hmr',
+	    heartbeat: 2000
+	}));
 
-app.get('/', function (req, res, next) {
-    var filename = path.join(compiler.outputPath, 'index.html');
-    compiler.outputFileSystem.readFile(filename, function(err, result) {
-        if(err) {
-            return next(err);
-        }
-        res.set('content-type','text/html');
-        res.send(result);
-        res.end();
-    });
-});
+	app.get('/', function (req, res, next) {
+	    var filename = path.join(compiler.outputPath, 'index.html');
+	    compiler.outputFileSystem.readFile(filename, function(err, result) {
+	        if(err) {
+	            return next(err);
+	        }
+	        res.set('content-type','text/html');
+	        res.send(result);
+	        res.end();
+	    });
+	});
+}
 
 var userList = {};
 
