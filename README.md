@@ -11,10 +11,12 @@ Features:
 
 Support browsers: IE edge/Chrome/FireFox
 
-install chat room: yarn install
+Please replace npm with yarn as a package manager: `npm install yarn -g`
 
-development mode: `yarn start`
+Install chat room: `yarn instal`
 
-production mode: `yarn build`
+Development mode: `yarn start`
 
-test building files: `yarn build-test`
+Production mode: `yarn build`
+
+Test building files: `yarn build-test`
