@@ -13,7 +13,7 @@ Support browsers: IE edge/Chrome/FireFox
 
 Please replace npm with yarn as a package manager: `npm install yarn -g`
 
-Install chat room: `yarn instal`
+Install chat room: `yarn install`
 
 Development mode: `yarn start`
 
