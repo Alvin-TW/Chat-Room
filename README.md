@@ -11,6 +11,8 @@ Features:
 
 Support browsers: IE edge/Chrome/FireFox
 
+install chat room: yarn install
+
 development mode: `yarn start`
 
 production mode: `yarn build`
