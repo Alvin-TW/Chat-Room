@@ -1,4 +1,5 @@
 var path = require('path');
+var port = process.env.PORT || 3000;
 var express = require('express');
 var app = express();
 var webpack = require('webpack');
@@ -74,6 +75,6 @@ io.on('connection', function(socket) {
     });
 });
 
-server.listen(3000, function(err) {
-    console.log('Listening port: 3000');
+server.listen(port, function(err) {
+    console.log('Listening port:' + port);
 });
