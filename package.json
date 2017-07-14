@@ -11,6 +11,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
+    "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",
@@ -34,6 +35,6 @@
   "scripts": {
     "start": "babel-node --presets es2015 server.js",
     "build": "webpack --config configs/webpack.config.prod.js",
-    "build-test": "set NODE_ENV=production&&webpack --config configs/webpack.config.prod.js&&node server.js"
+    "build-test": "cross-env NODE_ENV=production&&webpack --config configs/webpack.config.prod.js&&node server.js"
   }
 }
