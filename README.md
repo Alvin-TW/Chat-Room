@@ -9,7 +9,7 @@ Features:
 2. Change message box color
 3. Leave chat room/Clear messages
 
-Support browsers: IE edge/Chrome/FireFox
+Support browsers: IE 11+/Chrome/FireFox
 
 Please replace npm with yarn as a package manager: `npm install yarn -g`
 
