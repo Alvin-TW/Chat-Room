@@ -55,8 +55,8 @@ export default class ChatRoom extends Component {
                     </div>
                     <div className="chatroom-right-block">
                         <div className="chatroom-otherfn">
-                            <RaisedButton label="Leave Chat Room" primary={ true } onClick={ this.handleLeaveChatRoom.bind(this) } />
-                            <RaisedButton label="Clear Messages" primary={ true } onClick={ this.handleClearMessages.bind(this) } />
+                            <RaisedButton className="chatroom-otherfn-leave" label="Leave Room" primary={ true } onClick={ this.handleLeaveChatRoom.bind(this) } />
+                            <RaisedButton className="chatroom-otherfn-clear" label="Clear" primary={ true } onClick={ this.handleClearMessages.bind(this) } />
                         </div>
                         <div className="chatroom-messages">
                             <Messages { ...this.props } />
@@ -67,7 +67,7 @@ export default class ChatRoom extends Component {
                     <div className="chatroom-left-block">
                          <div className="chatroom-message-color">
                             <Subheader style={{'lineHeight': '28px'}}>
-                                { `Change MessageBox Color` }
+                                { `Change Color` }
                             </Subheader>
                              <CirclePicker onChangeComplete={ this.handleChangeComplete.bind(this) } />
                         </div>

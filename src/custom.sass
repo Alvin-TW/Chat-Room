@@ -1,3 +1,9 @@
+$mobile:  440px !default;
+
+@mixin mobile-only
+	@media (max-width : $mobile)
+		@content
+
 .login-container
 	height: 90vh
 	display: flex
@@ -46,11 +52,20 @@
 
 .chatroom-otherfn
 	height: 10vh
+	@include mobile-only
+		height: 20vh
+
+.chatroom-otherfn-leave,
+.chatroom-otherfn-clear
+	@include mobile-only
+		min-width: 100% !important
 
 .chatroom-messages
 	height: 75vh
 	padding: 0px 5px
 	overflow-y: auto
+	@include mobile-only
+    	height: 65vh
 
 .chatroom-message-input,
 .chatroom-message-color
