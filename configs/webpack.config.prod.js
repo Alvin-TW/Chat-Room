@@ -2,19 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+	mode: 'production',
     devtool: 'source-map',
-    entry: [
-        './src/index'
-    ],
-    output: {
-        path: path.resolve('./dist'),
-        filename: 'bundle.js'
-    },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -22,33 +17,33 @@ module.exports = {
             },
             {
             	test: /\.(sass|scss)$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: ['css-loader', 'sass-loader']
-				}),
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
 				exclude: [/node_modules/]
 			}
         ]
     },
      plugins: [
         new CleanWebpackPlugin(['./dist'], { root: process.cwd() }),
-        new webpack.optimize.UglifyJsPlugin({
-      		beautify: false,
-      		comments: false,
-			sourceMap: false,
-      		compress: {
-        		warnings: false
-      		},
-    	}),
 		new webpack.LoaderOptionsPlugin({
      		 minimize: true
     	}),
     	new HtmlWebpackPlugin({
     		template: './index.html'
     	}),
-        new ExtractTextPlugin({
-            filename: 'style.css',
-            allChunks: true
-		})
-    ]
+        new MiniCssExtractPlugin({
+            filename: 'style.css'
+        })
+    ],
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                uglifyOptions: {
+                    compress: false
+                },
+                sourceMap: false
+            })
+        ]
+    }
 }
