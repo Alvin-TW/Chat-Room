@@ -32,8 +32,7 @@
   },
   "scripts": {
     "start": "babel-node --presets es2015 server.js",
-    "build": "webpack --config configs/webpack.config.prod.js",
-    "build-test": "webpack --config configs/webpack.config.prod.js&&node server.js"
+    "build": "webpack --config configs/webpack.config.prod.js"
   },
   "devDependencies": {
     "mini-css-extract-plugin": "^0.5.0",

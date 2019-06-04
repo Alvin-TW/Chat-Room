@@ -1,4 +1,6 @@
-A chat room using React + Redux + Socket.io + Material-UI
+# Chat Room
+
+Using React + Redux + Socket.io + Material-UI to implement a chat room
 
 [DEMO](https://chat-room-react.herokuapp.com/)
 
@@ -9,14 +11,23 @@ Features:
 2. Change message box color
 3. Leave chat room/Clear messages
 
-Support browsers: IE 11+/Chrome/FireFox
+## Getting Started
+To execute the project, you have to do is:
 
-Please replace npm with yarn as a package manager: `npm install yarn -g`
+### Install dependencies
+```
+$ yarn
+```
+>> [node js](https://nodejs.org/en/download/) should be installed first, and then use `npm install -g yarn` command to install `yarn`.
 
-Install chat room: `yarn install`
+### Launch a web server to develop
+```
+$ yarn start
+```
+It will serve with hot reload at `http://localhost`. The default port `80` can be modified in `config/webpack/dev.config.js`.
 
-Development mode: `yarn start`
-
-Production mode: `yarn build`
-
-Test building files: `yarn build-test`
+### Build for production with minification
+```
+$ yarn build
+```
+The minify files will be built to `dist/`.
