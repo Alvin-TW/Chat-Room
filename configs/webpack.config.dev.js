@@ -21,11 +21,11 @@ module.exports = {
                 use: ['babel-loader']
             },
             {
-				test: /\.(sass|scss)$/,
-				use: ['style-loader', 'css-loader', 'sass-loader'],
-				exclude: [/node_modules/]
-			}
-        ]
+                test: /\.(sass|scss)$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+                exclude: [/node_modules/]
+             }
+        ],
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),

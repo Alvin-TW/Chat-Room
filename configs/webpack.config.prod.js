@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-	mode: 'production',
+    mode: 'production',
     devtool: 'source-map',
     module: {
         rules: [
@@ -16,20 +16,20 @@ module.exports = {
                 loaders: ['babel-loader']
             },
             {
-            	test: /\.(sass|scss)$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-				exclude: [/node_modules/]
-			}
+                test: /\.(sass|scss)$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+                exclude: [/node_modules/]
+            }
         ]
     },
      plugins: [
         new CleanWebpackPlugin(['./dist'], { root: process.cwd() }),
-		new webpack.LoaderOptionsPlugin({
-     		 minimize: true
-    	}),
-    	new HtmlWebpackPlugin({
-    		template: './index.html'
-    	}),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        }),
+        new HtmlWebpackPlugin({
+            template: './index.html'
+        }),
         new MiniCssExtractPlugin({
             filename: 'style.css'
         })
