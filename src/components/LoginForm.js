@@ -1,52 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import AppBar from 'material-ui/AppBar';
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
 import RaisedButton  from "material-ui/RaisedButton";
 import TextField from 'material-ui/TextField';
 
-export default class LoginForm extends Component {
-    handleLogin() {
-        const [ username, sex ] = [ this.refs.usernameField.input.value, this.refs.sexField.state.selected ]
-        const socket = this.props.socket
-        const that = this
+const LoginForm = props => {
+    let usernameField, sexField
+
+    const handleLogin = () => {
+        const [username, sex] = [usernameField.input.value, sexField.state.selected]
+        const socket = props.socket
 
         if(username) {
-            socket.on('uid', function(uid) {
-                that.props.actions.setUserId(uid)
-            })
+            socket.on('uid', uid => props.actions.setUserId(uid))
 
-            const userObj = { username: username, sex: sex }
+            const userObj = {username, sex}
 
             socket.emit('enter', userObj)
-            this.props.actions.setUserInfo(userObj)
-            this.props.actions.setErrorInfo('')
+            props.actions.setUserInfo(userObj)
+            props.actions.setErrorInfo('')
         }else {
-            this.props.actions.setErrorInfo('user name should be filled in.')
+            props.actions.setErrorInfo('user name should be filled in.')
         }
     }
 
-    handleKeyPress(e) {
+    const handleKeyPress = e => {
         if(e.key === 'Enter') {
-            this.handleLogin()
+            handleLogin()
         }
     }
 
-    render() {
-        return (
-            <div className="login-container">
-                <div className="login-form">
-                    <AppBar showMenuIconButton={ false } title="Chat Room" />
-                    <div className="login-form-field">
-                        <TextField hintText="Input your name" errorText={ this.props.errorinfo } ref="usernameField" onKeyPress={ this.handleKeyPress.bind(this) } />
-                        <RadioButtonGroup name="sex" defaultSelected="boy" ref="sexField" style={{ 'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center' }} >
-                            <RadioButton value="boy" label="Boy" style={{ width: 'auto' }} />
-                            <RadioButton value="girl" label="Girl" style={{ width: 'auto' }} />
-                        </RadioButtonGroup>
-                    </div>
-                    <RaisedButton label="Enter" primary={ true } onClick={ this.handleLogin.bind(this) } />
+    return (
+        <div className="login-container">
+            <div className="login-form">
+                <AppBar showMenuIconButton={false} title="Chat Room" />
+                <div className="login-form-field">
+                    <TextField 
+                        hintText="Input your name"
+                        errorText={props.errorinfo}
+                        ref={el => usernameField = el}
+                        onKeyPress={handleKeyPress}
+                    />
+                    <RadioButtonGroup
+                        name="sex"
+                        defaultSelected="boy"
+                        ref={el => sexField = el}
+                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
+                        <RadioButton value="boy" label="Boy" style={{ width: 'auto' }} />
+                        <RadioButton value="girl" label="Girl" style={{ width: 'auto' }} />
+                    </RadioButtonGroup>
                 </div>
+                <RaisedButton label="Enter" primary={true} onClick={handleLogin} />
             </div>
-        )
-    }
+        </div>
+    )
 }
+
+export default LoginForm

@@ -1,45 +1,53 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import TextField from 'material-ui/TextField';
 
-export default class ChatInput extends Component {
-    handleMessages() {
-        const message = this.refs.msgField.input.value
+const ChatInput = props => {
+    let msgField
 
-        if(message) {
+    const handleMessages = () => {
+        const message = msgField.input.value
+
+        if (message) {
             const messageObj = {
-                uid: this.props.uid,
-                username: this.props.username,
+                uid: props.uid,
+                username: props.username,
                 content: message,
-                time: this.getTime()
+                time: getTime()
             }
 
-            this.props.socket.emit('updateMessages', messageObj)
-            this.refs.msgField.input.value = ''
-            this.props.actions.setErrorInfo('')
-        }else {
-            this.props.actions.setErrorInfo('You don\'t input any messages.')
+            props.socket.emit('updateMessages', messageObj)
+            msgField.input.value = ''
+            props.actions.setErrorInfo('')
+        } else {
+            props.actions.setErrorInfo('You don\'t input any messages.')
         }
     }
 
-    handleKeyPress(e) {
-        if(e.key === 'Enter') {
-            this.handleMessages()
+    const handleKeyPress = e => {
+        if (e.key === 'Enter') {
+            handleMessages()
         }
     }
 
-    getTime() {
+    const getTime = () => {
         const date = new Date()
-        let [ hour, minute ] = [ date.getHours(), date.getMinutes() ]
+        let [hour, minute] = [date.getHours(), date.getMinutes()]
         hour = hour < 10 ? '0' + hour : hour
         minute = minute < 10 ? '0' + minute : minute
 
         return hour + ':' + minute
     }
 
-    render() {
-        return(
-            <TextField ref="msgField" style={{ width: '90%', paddingTop: '3vh' }} hintText="Input messsages" errorText={ this.props.errorinfo } onKeyPress={ this.handleKeyPress.bind(this) } />
-        )
-    }
+    return (
+        <TextField
+            ref={el => msgField = el}
+            style = {{ width: '90%', paddingTop: '3vh' }}
+            hintText = "Input messsages"
+            errorText = {props.errorinfo}
+            onKeyPress = {handleKeyPress}
+        />
+    )
 }
+
+export default ChatInput
