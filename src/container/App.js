@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actionCreators from '../actions/actionCreators'
 import { bindActionCreators } from 'redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import ChatRoom from '../components/ChatRoom'
-import LoginForm from '../components/LoginForm'
+import * as actionCreators from '@/actions/actionCreators'
+
+import ChatRoom from '@/components/ChatRoom'
+import LoginForm from '@/components/LoginForm'
 
 const App = props => (
     <MuiThemeProvider>
