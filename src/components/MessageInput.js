@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import TextField from 'material-ui/TextField';
+import TextField from 'material-ui/TextField'
 
 const ChatInput = props => {
     let msgField
@@ -9,14 +9,12 @@ const ChatInput = props => {
         const message = msgField.input.value
 
         if (message) {
-            const messageObj = {
+            props.socket.emit('updateMessages', {
                 uid: props.uid,
                 username: props.username,
                 content: message,
                 time: getTime()
-            }
-
-            props.socket.emit('updateMessages', messageObj)
+            })
             msgField.input.value = ''
             props.actions.setErrorInfo('')
         } else {

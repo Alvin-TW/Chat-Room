@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import AppBar from 'material-ui/AppBar';
-import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
-import RaisedButton  from "material-ui/RaisedButton";
-import TextField from 'material-ui/TextField';
+import AppBar from 'material-ui/AppBar'
+import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton"
+import RaisedButton  from "material-ui/RaisedButton"
+import TextField from 'material-ui/TextField'
 
 const LoginForm = props => {
     let usernameField, sexField
@@ -15,10 +15,10 @@ const LoginForm = props => {
         if(username) {
             socket.on('uid', uid => props.actions.setUserId(uid))
 
-            const userObj = {username, sex}
+            const user = {username, sex}
 
-            socket.emit('enter', userObj)
-            props.actions.setUserInfo(userObj)
+            socket.emit('enter', user)
+            props.actions.setUserInfo(user)
             props.actions.setErrorInfo('')
         }else {
             props.actions.setErrorInfo('user name should be filled in.')

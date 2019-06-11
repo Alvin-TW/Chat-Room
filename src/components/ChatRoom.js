@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
-import RaisedButton  from "material-ui/RaisedButton";
-import Subheader from 'material-ui/Subheader';
+import RaisedButton  from "material-ui/RaisedButton"
+import Subheader from 'material-ui/Subheader'
 
-import { CirclePicker } from 'react-color';
+import { CirclePicker } from 'react-color'
 
-import Messages from '../components/Messages';
-import MessageInput from '../components/MessageInput';
-import UserList from '../components/UserList';
+import Messages from '../components/Messages'
+import MessageInput from '../components/MessageInput'
+import UserList from '../components/UserList'
 
 const ChatRoom = props => {
     useEffect(() => {
@@ -16,14 +16,14 @@ const ChatRoom = props => {
         socket.on('enterUser', username => {
             props.actions.updateMessages({
                 type: 'ENTER_MESSAGE',
-                username: username
+                username
             })
         })
 
         socket.on('leaveUser', username => {
             props.actions.updateMessages({
                 type: 'LEAVE_MESSAGE',
-                username: username
+                username
             })
         })
 
@@ -82,7 +82,7 @@ const ChatRoom = props => {
                 <div className="chatroom-left-block">
                         <div className="chatroom-message-color">
                         <Subheader style={{lineHeight: '28px'}}>
-                            {`Change Color`}
+                            {'Change Color'}
                         </Subheader>
                             <CirclePicker onChangeComplete={handleChangeComplete} />
                     </div>

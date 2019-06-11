@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { List, ListItem } from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
-import Avatar from 'material-ui/Avatar';
+import { List, ListItem } from 'material-ui/List'
+import Subheader from 'material-ui/Subheader'
+import Avatar from 'material-ui/Avatar'
 
 const UserList = props => {
     const userlistElement = []
@@ -11,8 +11,9 @@ const UserList = props => {
 
     for(let uid in userlist) {
         const [username, sex] = [userlist[uid].username, userlist[uid].sex]
-        const listbkColor = sex === 'boy' ? '#99BBFF' : '#FF88C2'
-        const avatarbkColor = sex === 'boy' ? '#CCDDFF' : '#FFB7DD'
+        const isBoy = sex === 'boy'
+        const listbkColor = isBoy ? '#99BBFF' : '#FF88C2'
+        const avatarbkColor = isBoy ? '#CCDDFF' : '#FFB7DD'
 
         userlistElement.push(
             <ListItem

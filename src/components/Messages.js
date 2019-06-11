@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useEffect } from 'react'
+import ReactDOM from 'react-dom'
 
 const Messages = props => {
     let messagesEnd
 
     useEffect(() => {
-         const node = ReactDOM.findDOMNode(messagesEnd)
-         node.scrollIntoView()
+          ReactDOM.findDOMNode(messagesEnd).scrollIntoView()
     })
 
     const messages = props.messages
