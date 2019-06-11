@@ -16,7 +16,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
             },
@@ -26,6 +26,12 @@ module.exports = {
                 exclude: [/node_modules/]
              }
         ],
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json', '.css'],
+        alias: {
+            '@': path.resolve(__dirname, '../src'),
+        },
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),

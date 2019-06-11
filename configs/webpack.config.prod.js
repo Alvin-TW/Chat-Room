@@ -10,7 +10,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loaders: ['babel-loader']
             },
@@ -33,6 +33,12 @@ module.exports = {
             filename: 'style.css'
         })
     ],
+    resolve: {
+        extensions: ['.js', '.jsx', '.json', '.css'],
+        alias: {
+            '@': path.resolve(__dirname, '../src'),
+        },
+    },
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
