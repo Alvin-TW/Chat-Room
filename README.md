@@ -24,7 +24,7 @@ $ yarn
 ```
 $ yarn start
 ```
-It will serve with hot reload at `http://localhost`. The default port `80` can be modified in `config/webpack/dev.config.js`.
+It will serve with hot reload at `http://localhost`. The default port `80` can be modified in `server.js`.
 
 ### Build for production with minification
 ```
