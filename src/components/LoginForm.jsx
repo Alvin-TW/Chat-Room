@@ -6,55 +6,55 @@ import RaisedButton  from "material-ui/RaisedButton"
 import TextField from 'material-ui/TextField'
 
 const LoginForm = props => {
-    let usernameField, sexField
+  let usernameField, sexField
 
-    const handleLogin = () => {
-        const [username, sex] = [usernameField.input.value, sexField.state.selected]
-        const socket = props.socket
+  const handleLogin = () => {
+    const [username, sex] = [usernameField.input.value, sexField.state.selected]
+    const socket = props.socket
 
-        if(username) {
-            socket.on('uid', uid => props.actions.setUserId(uid))
+    if (username) {
+      socket.on('uid', uid => props.actions.setUserId(uid))
 
-            const user = {username, sex}
+      const user = {username, sex}
 
-            socket.emit('enter', user)
-            props.actions.setUserInfo(user)
-            props.actions.setErrorInfo('')
-        }else {
-            props.actions.setErrorInfo('user name should be filled in.')
-        }
+      socket.emit('enter', user)
+      props.actions.setUserInfo(user)
+      props.actions.setErrorInfo('')
+    } else {
+      props.actions.setErrorInfo('user name should be filled in.')
     }
+  }
 
-    const handleKeyPress = e => {
-        if(e.key === 'Enter') {
-            handleLogin()
-        }
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      handleLogin()
     }
+  }
 
-    return (
-        <div className="login-container">
-            <div className="login-form">
-                <AppBar showMenuIconButton={false} title="Chat Room" />
-                <div className="login-form-field">
-                    <TextField 
-                        hintText="Input your name"
-                        errorText={props.errorinfo}
-                        ref={el => usernameField = el}
-                        onKeyPress={handleKeyPress}
-                    />
-                    <RadioButtonGroup
-                        name="sex"
-                        defaultSelected="boy"
-                        ref={el => sexField = el}
-                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-                        <RadioButton value="boy" label="Boy" style={{ width: 'auto' }} />
-                        <RadioButton value="girl" label="Girl" style={{ width: 'auto' }} />
-                    </RadioButtonGroup>
-                </div>
-                <RaisedButton label="Enter" primary={true} onClick={handleLogin} />
-            </div>
+  return (
+    <div className="login-container">
+      <div className="login-form">
+        <AppBar showMenuIconButton={false} title="Chat Room" />
+        <div className="login-form-field">
+          <TextField
+            hintText="Input your name"
+            errorText={props.errorinfo}
+            ref={el => usernameField = el}
+            onKeyPress={handleKeyPress}
+          />
+          <RadioButtonGroup
+            name="sex"
+            defaultSelected="boy"
+            ref={el => sexField = el}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
+            <RadioButton value="boy" label="Boy" style={{ width: 'auto' }} />
+            <RadioButton value="girl" label="Girl" style={{ width: 'auto' }} />
+          </RadioButtonGroup>
         </div>
-    )
+        <RaisedButton label="Enter" primary={true} onClick={handleLogin} />
+      </div>
+    </div>
+  )
 }
 
 export default LoginForm
