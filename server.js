@@ -1,5 +1,5 @@
 var path = require('path');
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 var express = require('express');
 var app = express();
 var webpack = require('webpack');
