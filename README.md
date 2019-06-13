@@ -4,7 +4,7 @@ Using React + Redux + Socket.io + Material-UI to implement a chat room.
 
 [DEMO](https://chat-room-react.herokuapp.com/)
 
-![img](https://github.com/bestAlvin/Chat-Room/blob/master/img/demo.gif)
+![img](https://github.com/bestAlvin/Chat-Room/blob/master/demo/demo.gif)
 
 Features:
 1. Show online users
