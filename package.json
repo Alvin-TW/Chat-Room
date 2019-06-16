@@ -25,11 +25,11 @@
     "react-redux": "^7.0.3",
     "redux": "^3.7.1",
     "sass-loader": "^6.0.6",
-    "socket.io": "^2.0.3",
+    "socket.io": "2.2.0",
     "style-loader": "^0.18.2",
     "webpack": "^4.28.4",
-    "webpack-dev-middleware": "^3.5.1",
-    "webpack-hot-middleware": "^2.24.3",
+    "webpack-dev-middleware": "3.7.0",
+    "webpack-hot-middleware": "2.25.0",
     "yarn": "^1.16.0"
   },
   "scripts": {
