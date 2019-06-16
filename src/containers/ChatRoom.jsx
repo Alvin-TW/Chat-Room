@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
+import { CirclePicker } from 'react-color'
 
 import RaisedButton  from "material-ui/RaisedButton"
 import Subheader from 'material-ui/Subheader'
 
-import { CirclePicker } from 'react-color'
-
-import Messages from './Messages'
-import MessageInput from './MessageInput'
-import UserList from './UserList'
+import Messages from '@/components/Messages'
+import MessageInput from '@/components/MessageInput'
+import UserList from '@/components/UserList'
 
 const ChatRoom = props => {
   useEffect(() => {

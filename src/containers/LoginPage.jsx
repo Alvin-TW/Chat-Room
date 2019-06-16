@@ -5,7 +5,7 @@ import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton"
 import RaisedButton  from "material-ui/RaisedButton"
 import TextField from 'material-ui/TextField'
 
-const LoginForm = props => {
+const LoginPage = props => {
   let usernameField, sexField
 
   const handleLogin = () => {
@@ -57,4 +57,4 @@ const LoginForm = props => {
   )
 }
 
-export default LoginForm
+export default LoginPage

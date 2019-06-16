@@ -14,14 +14,14 @@ import {
   setErrorInfo
 } from '@/redux/modules/common'
 
-import './App.sass'
+import ChatRoom from '@/containers/ChatRoom'
+import LoginPage from '@/containers/LoginPage'
 
-import ChatRoom from '@/components/ChatRoom'
-import LoginForm from '@/components/LoginForm'
+import '@/App.sass'
 
 const App = props => (
   <MuiThemeProvider>
-    {props.username ? <ChatRoom {...props} /> : <LoginForm {...props} />}
+    {props.username ? <ChatRoom {...props} /> : <LoginPage {...props} />}
   </MuiThemeProvider>
 )
 

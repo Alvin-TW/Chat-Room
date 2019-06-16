@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import store from '@/redux/configureStore'
-import App from '@/container/App'
+import App from '@/App'
 
 const index = (
   <Provider store={store}>
