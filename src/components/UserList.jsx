@@ -1,13 +1,11 @@
 import React from 'react'
 
+import Avatar from 'material-ui/Avatar'
 import { List, ListItem } from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
-import Avatar from 'material-ui/Avatar'
 
-const UserList = props => {
+const UserList = ({ userlist }) => {
   const userlistElement = []
-  const userlist = props.userlist
-  const usernums = Object.keys(userlist).length
 
   for (let uid in userlist) {
     const [username, sex] = [userlist[uid].username, userlist[uid].sex]
@@ -28,7 +26,7 @@ const UserList = props => {
   return (
     <div>
       <Subheader>
-        {`Online Users: ${usernums}`}
+        {`Online Users: ${Object.keys(userlist).length}`}
       </Subheader>
       <List>
         {userlistElement}

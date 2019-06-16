@@ -27,7 +27,7 @@ const initialState  = {
   sex: '',
   userlist: {},
   messages: [],
-  msgboxcolor: '',
+  messageBackgroundColor: '',
   errorinfo: '',
   socket: io()
 }
@@ -45,7 +45,7 @@ export default function commonFn(state = initialState, action) {
     case CLEAR_MESSAGE:
       return {...state, messages: [] }
     case CHANGE_MESSAGEBOXCOLOR:
-      return {...state, msgboxcolor: action.color }
+      return {...state, messageBackgroundColor: action.color }
     case SET_ERRORINFO:
       return {...state, errorinfo: action.error }
     default:

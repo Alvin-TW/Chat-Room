@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
   sex: state.commonReducer.sex,
   userlist: state.commonReducer.userlist,
   messages: state.commonReducer.messages,
-  msgboxcolor: state.commonReducer.msgboxcolor,
+  messageBackgroundColor: state.commonReducer.messageBackgroundColor,
   errorinfo: state.commonReducer.errorinfo,
   socket: state.commonReducer.socket
 })

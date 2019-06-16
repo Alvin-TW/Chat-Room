@@ -2,23 +2,23 @@ import React from 'react'
 
 import TextField from 'material-ui/TextField'
 
-const ChatInput = props => {
+const MessageInputBox = ({ actions, errorinfo, socket, uid, username }) => {
   let msgField
 
   const handleMessages = () => {
-    const message = msgField.input.value
+    const content = msgField.input.value
 
-    if (message) {
-      props.socket.emit('updateMessages', {
-        uid: props.uid,
-        username: props.username,
-        content: message,
+    if (content) {
+      socket.emit('updateMessages', {
+        uid,
+        username,
+        content,
         time: getTime()
       })
       msgField.input.value = ''
-      props.actions.setErrorInfo('')
+      actions.setErrorInfo('')
     } else {
-      props.actions.setErrorInfo('You don\'t input any messages.')
+      actions.setErrorInfo('You don\'t input any messages.')
     }
   }
 
@@ -42,10 +42,10 @@ const ChatInput = props => {
       ref={el => msgField = el}
       style={{ width: '90%', paddingTop: '3vh' }}
       hintText="Input messsages"
-      errorText={props.errorinfo}
+      errorText={errorinfo}
       onKeyPress={handleKeyPress}
     />
   )
 }
 
-export default ChatInput
+export default MessageInputBox

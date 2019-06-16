@@ -4,57 +4,36 @@ import { CirclePicker } from 'react-color'
 import RaisedButton  from "material-ui/RaisedButton"
 import Subheader from 'material-ui/Subheader'
 
-import Messages from '@/components/Messages'
-import MessageInput from '@/components/MessageInput'
+import MessageDisplayBox from '@/components/MessageDisplayBox'
+import MessageInputBox from '@/components/MessageInputBox'
 import UserList from '@/components/UserList'
 
 const ChatRoom = props => {
+  const { actions, socket, uid, userlist } = props
+
   useEffect(() => {
-    const socket = props.socket
-
-    socket.on('enterUser', username => {
-      props.actions.updateMessages({
-        type: 'ENTER_MESSAGE',
-        username
-      })
-    })
-
-    socket.on('leaveUser', username => {
-      props.actions.updateMessages({
-        type: 'LEAVE_MESSAGE',
-        username
-      })
-    })
-
-    socket.on('updateUserList', userlist => {
-      props.actions.updateUserList(userlist)
-    })
-
-    socket.on('updateMessages', messages => {
-      props.actions.updateMessages(messages)
-    })
+    socket.on('enterUser', username =>  actions.updateMessages({ type: 'ENTER_MESSAGE', username }))
+    socket.on('leaveUser', username => actions.updateMessages({ type: 'LEAVE_MESSAGE', username}))
+    socket.on('updateUserList', userlist => actions.updateUserList(userlist))
+    socket.on('updateMessages', messages => actions.updateMessages(messages))
   }, [])
 
-  const handleChangeComplete = color => {
-    props.actions.changeMessageBoxColor(color.hex)
-  }
+  const handleChangeComplete = color => actions.changeMessageBoxColor(color.hex)
 
   const handleLeaveChatRoom = () => {
-    props.socket.emit('leave', props.uid)
-    props.actions.leaveChatRoom()
+    socket.emit('leave', uid)
+    actions.leaveChatRoom()
     location.reload()
   }
 
-  const handleClearMessages = () => {
-    props.actions.clearMessages()
-  }
+  const handleClearMessages = () => actions.clearMessages()
 
   return(
     <div>
       <div className="chatroom-container">
         <div className="chatroom-left-block">
           <div className="chatroom-userlist">
-            <UserList userlist={props.userlist} />
+            <UserList userlist={userlist} />
           </div>
         </div>
         <div className="chatroom-right-block">
@@ -73,7 +52,7 @@ const ChatRoom = props => {
             />
           </div>
             <div className="chatroom-messages">
-              <Messages {...props} />
+              <MessageDisplayBox {...props} />
             </div>
         </div>
       </div>
@@ -88,7 +67,7 @@ const ChatRoom = props => {
         </div>
         <div className="chatroom-right-block">
           <div className="chatroom-message-input">
-            <MessageInput {...props} />
+            <MessageInputBox {...props} />
           </div>
         </div>
       </div>

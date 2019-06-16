@@ -5,23 +5,21 @@ import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton"
 import RaisedButton  from "material-ui/RaisedButton"
 import TextField from 'material-ui/TextField'
 
-const LoginPage = props => {
+const LoginPage = ({ actions, errorinfo, socket }) => {
   let usernameField, sexField
 
   const handleLogin = () => {
     const [username, sex] = [usernameField.input.value, sexField.state.selected]
-    const socket = props.socket
 
     if (username) {
-      socket.on('uid', uid => props.actions.setUserId(uid))
+      const user = { username, sex }
 
-      const user = {username, sex}
-
+      socket.on('uid', uid => actions.setUserId(uid))
       socket.emit('enter', user)
-      props.actions.setUserInfo(user)
-      props.actions.setErrorInfo('')
+      actions.setUserInfo(user)
+      actions.setErrorInfo('')
     } else {
-      props.actions.setErrorInfo('user name should be filled in.')
+      actions.setErrorInfo('user name should be filled in.')
     }
   }
 
@@ -38,7 +36,7 @@ const LoginPage = props => {
         <div className="login-form-field">
           <TextField
             hintText="Input your name"
-            errorText={props.errorinfo}
+            errorText={errorinfo}
             ref={el => usernameField = el}
             onKeyPress={handleKeyPress}
           />
