@@ -40,10 +40,10 @@ const ChatInput = props => {
   return (
     <TextField
       ref={el => msgField = el}
-      style = {{ width: '90%', paddingTop: '3vh' }}
-      hintText = "Input messsages"
-      errorText = {props.errorinfo}
-      onKeyPress = {handleKeyPress}
+      style={{ width: '90%', paddingTop: '3vh' }}
+      hintText="Input messsages"
+      errorText={props.errorinfo}
+      onKeyPress={handleKeyPress}
     />
   )
 }
